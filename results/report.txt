@@ -1,0 +1,232 @@
+====================================================================================================
+HYDRAULIC ANALYSIS - Tunduma Water Supply Project - Momba (Saisi) River to Tunduma, design year 2035
+====================================================================================================
+Friction: hazen-williams, minor losses 10% of friction where no K given, water 20.0 degC
+Min pressure 5.0 m at junctions, 2.0 m along mains (pipe crown 1.2 m below ground), station losses 3.0 m, surge factor 1.0 x Joukowsky, PN check EN 805 (PMA = 1.2 x PFA)
+
+Raw water abstraction: 21,505 m3/day    Water delivered to demand nodes: 20,000 m3/day
+
+PIPES
+Pipe                                From -> To   DN   L (m)  h/d  Q (m3/d)  Q (l/s)  V (m/s)  Loss (m)   m/km   HGL in  HGL out  Pmin   Pmax  Surge    PN
+-----------------  ---------------------------  ---  ------  ---  --------  -------  -------  --------  -----  -------  -------  ----  -----  -----  ----
+ABSTRACTION        MOMBA_RIVER -> MOMBA_INTAKE  600     100   22    21,505      272     0.96       0.2   1.78  1,361.0  1,360.8     -    2.0     98  PN10
+LL_DELIVERY          MOMBA_INTAKE -> GRIT_TANK  600      30   22    21,505      272     0.96       0.1   1.78  1,369.1  1,369.0     -    4.3     98  PN10
+RAW_MAIN                GRIT_TANK -> MOMBA_WTP  600   1,078   22    21,505      272     0.96       1.9   1.78  1,380.9  1,379.0   8.3   16.2     98  PN10
+WTP_IKANA_RM            MOMBA_WTP -> IKANA_GBR  600  19,666   22    20,000      253     0.89      30.6   1.56  1,699.6  1,669.0   8.9  328.6     91  PN40
+IKANA_NKANGAMO_GM    IKANA_GBR -> NKANGAMO_BPS  600  38,930   24    20,000      231     0.82      51.6   1.33  1,663.3  1,611.7  65.6  205.9     83  PN25
+BPS_RM_1                NKANGAMO_BPS -> J-001N  600  19,581   22    20,000      253     0.89      30.5   1.56  1,738.2  1,707.7   6.7  183.9     91  PN25
+BPS_RM_2                      J-001N -> J-002N  600      40   22    19,628      248     0.88       0.1   1.50  1,707.7  1,707.7   9.6   10.6     89  PN10
+BPS_RM_3                      J-002N -> J-003N  600     100   22    18,082      228     0.81       0.1   1.29  1,707.7  1,707.5   9.2    9.6     82  PN10
+UHURU_INLET           J-003N -> UHURU_PARK_GBR  600      50   22    17,460      220     0.78       0.1   1.21  1,707.5  1,707.5   9.4   11.4     79  PN10
+ESR_BRANCH               J-001N -> TUNDUMA_ESR  100      38   22       372        5     0.60       0.2   5.98  1,707.7  1,707.5  10.6   10.6     61  PN10
+GSR01_BRANCH             J-002N -> UHURU_GSR01  150      40   22     1,547       20     1.11       0.5  11.64  1,707.7  1,707.2   9.6   10.0    113  PN10
+IPITO_BRANCH             J-003N -> IPITO_GSR02  150   4,221   22       622        8     0.44       9.1   2.16  1,707.5  1,698.4   9.0   97.9     45  PN16
+UHURU_J004N           UHURU_PARK_GBR -> J-004N  150   1,563   24     1,244       14     0.81      10.4   6.62  1,697.6  1,687.2  -1.9   58.4     83  PN10
+MAKAMBINI_BRANCH     J-004N -> MAKAMBINI_GSR03  100     494   24       622        7     0.92       6.5  13.22  1,687.2  1,680.7  58.4   58.4     93  PN10
+CHAPWA_BRANCH           J-004N -> CHAPWA_GSR04  100   2,790   24       622        7     0.92      36.9  13.22  1,687.2  1,650.4  58.4  127.8     93  PN25
+  * = diameter chosen by the program; pressures in m of water; PN column basis: working
+  PN by chainage along each pipe - working pressure only / including surge:
+    ABSTRACTION: PN10 (0-100 m)
+                 PN10 (0-100 m)  (incl. surge 98 m)
+    LL_DELIVERY: PN10 (0-30 m)
+                 PN10 (0-30 m)  (incl. surge 98 m)
+    RAW_MAIN: PN10 (0-1,078 m)
+              PN10 (0-1,078 m)  (incl. surge 98 m)
+    WTP_IKANA_RM: PN40 (0-1,450 m), PN30 (1,450-12,227 m), PN25 (12,227-18,973 m), PN16 (18,973-19,408 m), PN10 (19,408-19,666 m)
+                  PN40 (0-5,926 m), PN30 (5,926-17,427 m), PN25 (17,427-19,408 m), PN10 (19,408-19,666 m)  (incl. surge 91 m)
+    IKANA_NKANGAMO_GM: PN10 (0-170 m), PN16 (170-381 m), PN25 (381-7,257 m), PN16 (7,257-9,906 m), PN25 (9,906-10,006 m), PN16 (10,006-10,706 m), PN25 (10,706-12,707 m), PN16 (12,707-13,307 m), PN25 (13,307-14,358 m), PN16 (14,358-19,259 m), PN10 (19,259-19,659 m), PN16 (19,659-24,061 m), PN25 (24,061-24,611 m), PN16 (24,611-25,611 m), PN25 (25,611-34,667 m), PN16 (34,667-35,217 m), PN25 (35,217-35,367 m), PN16 (35,367-38,930 m)
+                       PN16 (0-170 m), PN25 (170-16,609 m), PN16 (16,609-16,709 m), PN25 (16,709-17,509 m), PN16 (17,509-17,809 m), PN25 (17,809-18,659 m), PN16 (18,659-20,459 m), PN25 (20,459-38,930 m)  (incl. surge 83 m)
+    BPS_RM_1: PN25 (0-613 m), PN16 (613-1,513 m), PN25 (1,513-2,553 m), PN16 (2,553-5,495 m), PN25 (5,495-5,776 m), PN16 (5,776-7,558 m), PN10 (7,558-19,581 m)
+              PN25 (0-7,518 m), PN16 (7,518-10,116 m), PN10 (10,116-10,756 m), PN16 (10,756-13,483 m), PN10 (13,483-16,224 m), PN16 (16,224-16,504 m), PN10 (16,504-19,581 m)  (incl. surge 91 m)
+    BPS_RM_2: PN10 (0-40 m)
+              PN10 (0-40 m)  (incl. surge 89 m)
+    BPS_RM_3: PN10 (0-100 m)
+              PN10 (0-100 m)  (incl. surge 82 m)
+    UHURU_INLET: PN10 (0-50 m)
+                 PN10 (0-50 m)  (incl. surge 79 m)
+    ESR_BRANCH: PN10 (0-38 m)
+                PN10 (0-38 m)  (incl. surge 61 m)
+    GSR01_BRANCH: PN10 (0-40 m)
+                  PN16 (0-40 m)  (incl. surge 113 m)
+    IPITO_BRANCH: PN10 (0-2,734 m), PN16 (2,734-2,871 m), PN10 (2,871-3,268 m), PN16 (3,268-3,366 m), PN10 (3,366-4,221 m)
+                  PN10 (0-2,384 m), PN16 (2,384-3,793 m), PN10 (3,793-4,221 m)  (incl. surge 45 m)
+    UHURU_J004N: PN10 (0-1,563 m)
+                 PN10 (0-815 m), PN16 (815-1,563 m)  (incl. surge 83 m)
+    MAKAMBINI_BRANCH: PN10 (0-494 m)
+                      PN16 (0-494 m)  (incl. surge 93 m)
+    CHAPWA_BRANCH: PN10 (0-599 m), PN16 (599-2,587 m), PN25 (2,587-2,790 m)
+                   PN16 (0-599 m), PN25 (599-2,790 m)  (incl. surge 93 m)
+
+PUMP STATIONS
+Station         Type  Pumps  h/d  Q/pump m3/h  l/s  Suction LWL  Delivery HGL  TDH (m)  Shaft kW  Motor kW  kWh/day  kWh/m3  NPSHa
+------------  ------  -----  ---  -----------  ---  -----------  ------------  -------  --------  --------  -------  ------  -----
+MOMBA_INTAKE  INTAKE  1w+1s   22          978  272      1,360.0       1,369.1     12.1        43        55    1,002    0.05      -
+GRIT_TANK       SUMP  1w+1s   22          978  272      1,366.5       1,380.9     17.4        62        75    1,448    0.07      -
+MOMBA_WTP        WTP  3w+1s   22          303   84      1,368.5       1,699.6    334.1       354       450   24,575    1.23      -
+NKANGAMO_BPS     BPS  2w+1s   22          455  126      1,553.0       1,738.2    188.2       299       355   13,844    0.69      -
+  MOMBA_INTAKE: head set by inlet of GRIT_TANK (level 1368.0 m + 1.0 m)
+  GRIT_TANK: head set by inlet of MOMBA_WTP (level 1378.0 m + 1.0 m)
+  MOMBA_WTP: head set by inlet of IKANA_GBR (level 1668.0 m + 1.0 m)
+  NKANGAMO_BPS: head set by inlet of TUNDUMA_ESR (level 1706.5 m + 1.0 m)
+
+GRAVITY ZONES
+Start           Available (m)  Required (m)  Surplus (m)         Status                                                          Governed by
+--------------  -------------  ------------  -----------  -------------  -------------------------------------------------------------------
+MOMBA_RIVER           1,361.0       1,360.2          0.8             OK                       inlet of MOMBA_INTAKE (level 1360.0 m + 0.0 m)
+IKANA_GBR             1,663.3       1,610.1         53.2             OK                       inlet of NKANGAMO_BPS (level 1557.5 m + 1.0 m)
+UHURU_PARK_GBR        1,697.6       1,701.5         -3.9  SHORT OF HEAD  pipe UHURU_J004N at 179 m (pipe crown 1698.3 m + 2 m min. pressure)
+
+TANKS
+Tank                 BWL      TWL  Arrival HGL  Excess head  Inflow m3/d  h/d  Required m3  Volume m3  Storage h
+---------------  -------  -------  -----------  -----------  -----------  ---  -----------  ---------  ---------
+IKANA_GBR        1,663.3  1,668.0      1,663.3          0.0       20,000   22        1,667      3,000        3.6
+UHURU_PARK_GBR   1,697.6  1,702.3      1,697.6          4.2       17,460   22        1,455      5,000        6.9
+TUNDUMA_ESR      1,703.5  1,706.5      1,707.5          0.0          372   22           31        120        7.8
+UHURU_GSR01      1,698.4  1,701.4      1,707.2          4.8        1,547   22          129        500        7.8
+IPITO_GSR02      1,681.2  1,684.2      1,698.4         13.2          622   22           52        200        7.7
+MAKAMBINI_GSR03  1,655.7  1,658.7      1,680.7         21.0          622   24            0        200        7.7
+CHAPWA_GSR04     1,521.4  1,524.4      1,650.4        125.0          622   24            0        200        7.7
+
+WARNINGS / DESIGN NOTES
+  [UHURU_PARK_GBR] gravity zone from Uhuru Park GBR 5,000 m3 (Tunduma) is short of head by 3.9 m - increase pipe sizes (or set dn 'auto') or add a booster pump
+  [RAW_MAIN] pump trip / valve closure can drop pressure to -90 m (surge 98 m) - surge protection needed (surge vessel, air valves)
+  [WTP_IKANA_RM] pump trip / valve closure can drop pressure to -82 m (surge 91 m) - surge protection needed (surge vessel, air valves)
+  [IKANA_NKANGAMO_GM] pump trip / valve closure can drop pressure to -18 m (surge 83 m) - surge protection needed (surge vessel, air valves)
+  [BPS_RM_1] pump trip / valve closure can drop pressure to -84 m (surge 91 m) - surge protection needed (surge vessel, air valves)
+  [IPITO_BRANCH] pump trip / valve closure can drop pressure to -36 m (surge 45 m) - surge protection needed (surge vessel, air valves)
+  [UHURU_J004N] negative pressure -1.9 m along the pipe - HGL below ground
+  [UHURU_J004N] pump trip / valve closure can drop pressure to -85 m (surge 83 m) - surge protection needed (surge vessel, air valves)
+  [CHAPWA_BRANCH] pump trip / valve closure can drop pressure to -35 m (surge 93 m) - surge protection needed (surge vessel, air valves)
+  [MAKAMBINI_BRANCH] pump trip / valve closure can drop pressure to -35 m (surge 93 m) - surge protection needed (surge vessel, air valves)
+  [NKANGAMO_BPS] arrives with 53.2 m excess head - fit a flow control valve / PRV at the inlet or reduce the pipe size
+  [IPITO_GSR02] arrives with 13.2 m excess head - fit a flow control valve at the inlet
+  [MAKAMBINI_GSR03] arrives with 21.0 m excess head - fit a flow control valve / PRV at the inlet or reduce the pipe size
+  [CHAPWA_GSR04] arrives with 125.0 m excess head - fit a flow control valve / PRV at the inlet or reduce the pipe size
+
+COMPARISON WITH THE EMPLOYER'S REQUIREMENTS (schematic Fig. 2)
+Link               ER L (m)  Plan L (m)  Model L (m)  Diff (m)  Q (m3/d)  h/d  V (m/s)
+-----------------  --------  ----------  -----------  --------  --------  ---  -------
+ABSTRACTION             100           -          100         0    21,505   22     0.96
+LL_DELIVERY               -           -           30         -    21,505   22     0.96
+RAW_MAIN              1,177       1,078        1,078       -99    21,505   22     0.96
+WTP_IKANA_RM         20,994      19,639       19,666    -1,328    20,000   22     0.89
+IKANA_NKANGAMO_GM    38,504      38,877       38,930       426    20,000   24     0.82
+BPS_RM_1             21,673      19,563       19,581    -2,092    20,000   22     0.89
+BPS_RM_2                  -          40           40         -    19,628   22     0.88
+BPS_RM_3                  -         100          100         -    18,082   22     0.81
+UHURU_INLET               -           -           50         -    17,460   22     0.78
+ESR_BRANCH               38           -           38         0       372   22     0.60
+GSR01_BRANCH             40           -           40         0     1,547   22     1.11
+IPITO_BRANCH          4,285       4,212        4,221       -64       622   22     0.44
+UHURU_J004N           1,555       1,561        1,563         8     1,244   24     0.81
+MAKAMBINI_BRANCH        494           -          494         0       622   24     0.92
+CHAPWA_BRANCH         2,664       2,786        2,790       126       622   24     0.92
+
+Station       Pumps  ER Q m3/h  Model Q m3/h  ER H (m)  Model TDH (m)  Diff (m)  Shaft kW  Motor kW
+------------  -----  ---------  ------------  --------  -------------  --------  --------  --------
+MOMBA_INTAKE  1W+1S        978           978        10           12.1       2.1        43        55
+GRIT_TANK     1W+1S        978           978        25           17.4      -7.6        62        75
+MOMBA_WTP     3W+1S        304           303       330          334.1       4.1       354       450
+NKANGAMO_BPS  2W+1S        455           455       221          188.2     -32.8       299       355
+
+PIPE PRESSURE CLASS - length (m) per PN: ER schedule vs model (working pressure / incl. unprotected surge)
+Link                       Basis    PN10    PN16    PN25    PN30   PN40  PN64  > max
+-----------------  -------------  ------  ------  ------  ------  -----  ----  -----
+ABSTRACTION                   ER     100       -       -       -      -     -      -
+ABSTRACTION        model working     100       -       -       -      -     -      -
+ABSTRACTION        model + surge     100       -       -       -      -     -      -
+RAW_MAIN                      ER   1,177       -       -       -      -     -      -
+RAW_MAIN           model working   1,078       -       -       -      -     -      -
+RAW_MAIN           model + surge   1,078       -       -       -      -     -      -
+WTP_IKANA_RM                  ER     305     119   4,705  10,798  5,067     -      -
+WTP_IKANA_RM       model working     257     436   6,746  10,776  1,450     -      -
+WTP_IKANA_RM       model + surge     257       -   1,981  11,501  5,926     -      -
+IKANA_NKANGAMO_GM             ER   2,877  13,247  22,380       -      -     -      -
+IKANA_NKANGAMO_GM  model working     570  18,575  19,784       -      -     -      -
+IKANA_NKANGAMO_GM  model + surge       -   2,371  36,560       -      -     -      -
+BPS_RM_1                      ER  10,310   7,177   4,185       -      -     -      -
+BPS_RM_1           model working  12,023   5,624   1,935       -      -     -      -
+BPS_RM_1           model + surge   6,459   5,605   7,518       -      -     -      -
+ESR_BRANCH                    ER      38       -       -       -      -     -      -
+ESR_BRANCH         model working      38       -       -       -      -     -      -
+ESR_BRANCH         model + surge      38       -       -       -      -     -      -
+GSR01_BRANCH                  ER       -      40       -       -      -     -      -
+GSR01_BRANCH       model working      40       -       -       -      -     -      -
+GSR01_BRANCH       model + surge       -      40       -       -      -     -      -
+IPITO_BRANCH                  ER   4,285       -       -       -      -     -      -
+IPITO_BRANCH       model working   3,986     234       -       -      -     -      -
+IPITO_BRANCH       model + surge   2,812   1,409       -       -      -     -      -
+UHURU_J004N                   ER   1,555       -       -       -      -     -      -
+UHURU_J004N        model working   1,563       -       -       -      -     -      -
+UHURU_J004N        model + surge     815     748       -       -      -     -      -
+MAKAMBINI_BRANCH              ER     494       -       -       -      -     -      -
+MAKAMBINI_BRANCH   model working     494       -       -       -      -     -      -
+MAKAMBINI_BRANCH   model + surge       -     494       -       -      -     -      -
+CHAPWA_BRANCH                 ER       -       -   2,664       -      -     -      -
+CHAPWA_BRANCH      model working     599   1,988     204       -      -     -      -
+CHAPWA_BRANCH      model + surge       -     599   2,191       -      -     -      -
+  Note: the ER schedule for BPS_RM_1 covers the whole BPS -> Uhuru Park main (21,672 m).
+
+ALIGNMENT CORRECTIONS
+  P0066: length 82.61 m < straight-line distance 102.46 m -> 102.46 m used
+  P2160: length 44.56 m < straight-line distance 104.99 m -> 104.99 m used
+
+====================================================================================================
+EPANET steady-state check: Tunduma_Transmission_Main_v1_ER_pumps.inp
+----------------------------------------------------------------------------------------------------
+PUMP STATIONS  (EPANET operating point vs design)
+Station          pumps Q/pump l/s  design      ER Q tot m3/h  design  head m  design     ER
+MOMBA_INTAKE         1      295.7   271.5   271.7       1065     978     9.4    12.1     10
+GRIT_TANK            1      341.8   271.5   271.7       1230     978    20.1    17.4     25
+MOMBA_WTP            3       83.5    84.2    84.4        902     909   332.5   334.1    330
+NKANGAMO_BPS         2      126.3   126.3   126.4        909     909   221.1   188.2    221
+
+PIPELINES  (flow and pressure along the route in EPANET)
+Link                  Q l/s   design  diff %   Pmin m   Pmax m   HGL end    design  valve
+ABSTRACTION           295.7    271.5     8.9      nan      nan    1360.8    1360.8  
+LL_DELIVERY           295.7    271.5     8.9      nan      nan    1366.5    1369.0  
+RAW_MAIN              341.8    271.5    25.9      7.2     15.7    1379.0    1379.0  
+WTP_IKANA_RM          250.4    252.5    -0.8      6.6    324.8    1667.9    1669.0  
+IKANA_NKANGAMO_GM     231.5    231.5    -0.0     69.1    209.4    1616.4    1611.7  ACTIVE (controlling)
+BPS_RM_1              252.5    252.5    -0.0     38.4    209.3    1740.7    1707.7  
+BPS_RM_2              247.8    247.8    -0.0     41.5     41.5    1740.6    1707.7  
+BPS_RM_3              228.3    228.3     0.0     41.0     41.2    1740.5    1707.5  
+UHURU_INLET           220.5    220.5    -0.0      nan      nan    1740.5    1707.5  ACTIVE (controlling)
+ESR_BRANCH              4.7      4.7     0.0      nan      nan    1740.5    1707.5  ACTIVE (controlling)
+GSR01_BRANCH           19.5     19.5    -0.0      nan      nan    1740.2    1707.2  ACTIVE (controlling)
+IPITO_BRANCH            7.9      7.9     0.0     40.8    129.7    1731.4    1698.4  ACTIVE (controlling)
+UHURU_J004N            14.4     14.4    -0.0      1.5     58.3    1691.9    1687.2  
+MAKAMBINI_BRANCH        7.2      7.2    -0.0      nan      nan    1685.4    1680.7  ACTIVE (controlling)
+CHAPWA_BRANCH           7.2      7.2    -0.0     62.3    131.2    1655.0    1650.4  ACTIVE (controlling)
+
+Nodes with negative pressure: 0
+
+====================================================================================================
+EPANET steady-state check: Tunduma_Transmission_Main_v1_design_pumps.inp
+----------------------------------------------------------------------------------------------------
+PUMP STATIONS  (EPANET operating point vs design)
+Station          pumps Q/pump l/s  design      ER Q tot m3/h  design  head m  design     ER
+MOMBA_INTAKE         1      327.2   271.5   271.7       1178     978    10.2    12.1     10
+GRIT_TANK            1      272.1   271.5   271.7        980     978    17.4    17.4     25
+MOMBA_WTP            3       84.5    84.2    84.4        913     909   333.3   334.1    330
+NKANGAMO_BPS         2      126.3   126.3   126.4        909     909   188.2   188.2    221
+
+PIPELINES  (flow and pressure along the route in EPANET)
+Link                  Q l/s   design  diff %   Pmin m   Pmax m   HGL end    design  valve
+ABSTRACTION           327.2    271.5    20.5      nan      nan    1360.7    1360.8  
+LL_DELIVERY           327.2    271.5    20.5      nan      nan    1366.5    1369.0  
+RAW_MAIN              272.1    271.5     0.2      7.1     14.8    1379.0    1379.0  
+WTP_IKANA_RM          253.5    252.5     0.4      6.6    325.5    1667.9    1669.0  
+IKANA_NKANGAMO_GM     231.5    231.5    -0.0     69.1    209.4    1616.4    1611.7  ACTIVE (controlling)
+BPS_RM_1              252.5    252.5    -0.0      5.5    176.4    1707.8    1707.7  
+BPS_RM_2              247.8    247.8    -0.0      8.6      8.6    1707.7    1707.7  
+BPS_RM_3              228.3    228.3    -0.0      8.1      8.2    1707.6    1707.5  
+UHURU_INLET           220.5    220.5    -0.0      nan      nan    1707.5    1707.5  ACTIVE (controlling)
+ESR_BRANCH              4.7      4.7     0.0      nan      nan    1707.6    1707.5  ACTIVE (controlling)
+GSR01_BRANCH           19.5     19.5    -0.0      nan      nan    1707.3    1707.2  ACTIVE (controlling)
+IPITO_BRANCH            7.9      7.9     0.0      7.8     96.8    1698.5    1698.4  ACTIVE (controlling)
+UHURU_J004N            14.4     14.4    -0.0      1.5     58.3    1691.9    1687.2  
+MAKAMBINI_BRANCH        7.2      7.2    -0.0      nan      nan    1685.4    1680.7  ACTIVE (controlling)
+CHAPWA_BRANCH           7.2      7.2    -0.0     62.3    131.2    1655.0    1650.4  ACTIVE (controlling)
+
+Nodes with negative pressure: 0

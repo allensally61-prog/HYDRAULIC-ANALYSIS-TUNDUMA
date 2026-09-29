@@ -1,0 +1,78 @@
+REVIEW OF Tunduma_Transmission_Main_DRAFT.inp
+====================================================================================================
+ 1. Reservoir head is the ground level, not the river water level
+    N0001 head = 1365.94 m (= ground at the intake). River Momba survey points are 1360.7-1364.5 m; model uses LWL 1361.0 m / HWL 1364.5 m.
+    With the head at ground level the intake suction and low-lift pump head are wrong.
+
+ 2. No pumps in the model
+    ER stations: MOMBA_INTAKE Q=978 m3/h H=10 m (1W+1S); GRIT_TANK Q=978 m3/h H=25 m (1W+1S); MOMBA_WTP Q=304 m3/h H=330 m (3W+1S); NKANGAMO_BPS Q=455 m3/h H=221 m (2W+1S)
+    Without pumps a reservoir at ~1366 m cannot supply tanks at ~1700 m - EPANET gives large negative pressures and flow running back from the tanks to the river.
+
+ 3. Tank N2163 has placeholder geometry
+    D = 15 m, levels 0-6 m -> 1,060 m3; elevation 1699.34 m. Replace with the real tank floor, BWL/TWL and diameter (see tunduma_config.json).
+
+ 4. Tank N2250 has placeholder geometry
+    D = 15 m, levels 0-6 m -> 1,060 m3; elevation 1684.57 m. Replace with the real tank floor, BWL/TWL and diameter (see tunduma_config.json).
+
+ 5. Tank N2338 has placeholder geometry
+    D = 15 m, levels 0-6 m -> 1,060 m3; elevation 1523.81 m. Replace with the real tank floor, BWL/TWL and diameter (see tunduma_config.json).
+
+ 6. N2163 is modelled as a tank but is junction J-003N
+    ER schematic: J-003N is a pipe junction on the BPS rising main (Ipito offtake); Uhuru Park GBR sits just after it and the Chapwa/Makambini line leaves the GBR by gravity.
+
+ 7. GRIT_TANK missing from the model
+    Grit tank - high lift PS (elevation 1365.94 m): off the surveyed route, fed by branch LL_DELIVERY from MOMBA_INTAKE (ASSUMED short delivery pipe low-lift PS -> grit tank) - not in the draft.
+
+ 8. MOMBA_WTP missing from the model
+    Momba WTP (20,000 m3/day) (elevation 1372.1 m): at alignment node N0021 - the draft runs the pipe straight through it as a junction.
+
+ 9. IKANA_GBR missing from the model
+    Ikana (Momba) GBR 3,000 m3 (elevation 1663.0 m): at alignment node N0412 - the draft runs the pipe straight through it as a junction.
+
+10. NKANGAMO_BPS missing from the model
+    Nkangamo BPS (elevation 1555.5 m): sits inside the inferred pipe GAP-BPS-approach - the draft has no station there.
+
+11. TUNDUMA_ESR missing from the model
+    Existing Tunduma ESR 120 m3 (elevation 1700.0 m): off the surveyed route, fed by branch ESR_BRANCH from J-001N (STEEL DN100-PN10, L = 38 m (schematic label DN80)) - not in the draft.
+
+12. UHURU_GSR01 missing from the model
+    Existing Tunduma Uhuru GSR 01 500 m3 (elevation 1698.4 m): off the surveyed route, fed by branch GSR01_BRANCH from J-002N (STEEL DN150-PN16, L = 40 m) - not in the draft.
+
+13. MAKAMBINI_GSR03 missing from the model
+    Existing Tunduma Makambini GSR 03 (elevation 1655.7 m): off the surveyed route, fed by branch MAKAMBINI_BRANCH from J-004N (STEEL DN100-PN10, L = 494 m (route not surveyed - straight line)) - not in the draft.
+
+14. All pipes have placeholder diameter/roughness
+    Diameters used: {'300': 2334} mm; H-W C: {'120': 2334}. ER: STEEL DN600 main, DN150/DN100 branches to the existing tanks.
+
+15. Inferred connector GAP-Waypoint1 (364 m straight line)
+    N0402 (1522.84 m) -> N0403 (1645.96 m): dz = +123.1 m, slope 34 %. No survey levels in between - survey the real route.
+
+16. Inferred connector GAP-BPS-approach (364 m straight line)
+    N1184 (1547.09 m) -> N1185 (1561.64 m): dz = +14.6 m, slope 4 %. No survey levels in between - survey the real route.
+
+17. Pipe shorter than the distance between its end nodes
+    P0066: length 82.61 m < straight-line distance 102.46 m -> 102.46 m used
+
+18. Pipe shorter than the distance between its end nodes
+    P2160: length 44.56 m < straight-line distance 104.99 m -> 104.99 m used
+
+19. Route lengths differ from the ER schematic
+    RAW_MAIN           ER    1,177 m   alignment    1,078 m (slope    1,078 m)   diff      -99 m
+    WTP_IKANA_RM       ER   20,994 m   alignment   19,639 m (slope   19,666 m)   diff   -1,328 m
+    IKANA_NKANGAMO_GM  ER   38,504 m   alignment   38,877 m (slope   38,930 m)   diff     +426 m
+    BPS_RM_1           ER   21,673 m   alignment   19,563 m (slope   19,581 m)   diff   -2,092 m
+    IPITO_BRANCH       ER    4,285 m   alignment    4,212 m (slope    4,221 m)   diff      -64 m
+    UHURU_J004N        ER    1,555 m   alignment    1,561 m (slope    1,563 m)   diff       +8 m
+    CHAPWA_BRANCH      ER    2,664 m   alignment    2,786 m (slope    2,790 m)   diff     +126 m
+    Check against the DXF polylines: the WTP->Ikana and BPS->Uhuru Park sections are 1.3-2.1 km shorter than the ER, partly where GAP connectors cut straight across.
+
+20. No demands and no flow control
+    ER demands: Uhuru Park town 16,215.62, Uhuru GSR01 1,546.56, ESR 371.52, Ipito/Makambini/Chapwa 622.1 each (m3/day). Branches to the existing tanks need flow control valves, otherwise the nearest/lowest tank takes all the water.
+
+21. OK - ground levels match the survey
+    2335 nodes checked: max |dz| to nearest survey point 0.01 m, median horizontal offset 5.6 m. The alignment levels can be trusted.
+
+22. EPANET result of the draft model
+    Pressure range -209 to 135 m; 1098 of 2335 nodes negative.
+    Flow in first pipe P0001: -73.8 l/s (negative = towards the river).
+
