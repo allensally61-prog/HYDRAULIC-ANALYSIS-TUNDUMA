@@ -20,6 +20,23 @@ python review_draft_inp.py     # list the problems in the draft .inp
 python make_report_pdf.py      # academic black-and-white PDF report (needs reportlab)
 python make_explainer_pdf.py   # plain-language learning guide built on the Bernoulli equation
 python make_zone_workbook.py   # Excel zone calculator with live formulas (one sheet per zone)
+python levels_from_excel.py results/Tunduma_Zone_Calculator.xlsx   # copy levels typed in Excel into the config
+```
+
+### When you receive the real tank levels
+
+1. Open `results/Tunduma_Zone_Calculator.xlsx` → sheet **Levels**: type ground, floor, **minimum** and
+   **maximum** water level, inlet level (blank = maximum level) and capacity of every tank, sump and the river.
+   The *Check* column must read OK.
+2. Read **Summary**: pump head with suction at minimum level (design) and at maximum level, gravity surplus at
+   minimum and maximum level, arriving head / valve duty at every tank, storage check, lowest pressure on each route.
+   Each zone sheet explains its result step by step in section F.
+3. To bring the Python model and the PDF reports in line, run
+   `python levels_from_excel.py results/Tunduma_Zone_Calculator.xlsx`, then
+   `python run_analysis.py`, `python make_report_pdf.py`, `python make_explainer_pdf.py` and
+   `python make_zone_workbook.py`.
+
+```bash
 ```
 
 `run_analysis.py` with no extra packages still does the full design analysis; `wntr` adds the independent EPANET solve.
@@ -35,6 +52,7 @@ python make_zone_workbook.py   # Excel zone calculator with live formulas (one s
 | `run_analysis.py` | Runs everything and writes `results/` and `model/`. |
 | `review_draft_inp.py` | Checks the draft `.inp` → `results/draft_inp_review.txt`. |
 | `make_zone_workbook.py` | Writes `results/Tunduma_Zone_Calculator.xlsx`: one sheet per zone (River→Intake, Intake→Grit, Grit→WTP, WTP→Ikana, Ikana→Nkangamo, Nkangamo→Uhuru Park, Uhuru Park→Chapwa). Every result is a live Excel formula: change the blue/yellow inputs (DN, length, C, levels, hours, demands, pumps) and flows, losses, HGL, pump head, power, motor, energy, pressures and PN update. A Summary sheet collects all zones and a Profile sheet checks the pressure at every survey point. |
+| `levels_from_excel.py` | Copies the levels (sheet *Levels*) and demands (sheet *Demands*) from the Excel calculator into `tunduma_config.json` (backup kept as `.bak`), so all scripts and reports use the same levels. |
 | `make_explainer_pdf.py` | Writes `results/Tunduma_Hydraulics_Explained_Simply.pdf`: a plain-language learning guide. It builds the ideas from zero (continuity, Bernoulli, friction, HGL, pumps, PN, water hammer, storage) and applies Bernoulli step by step to each part of the system, with what each result means and a Q&A section. |
 | `make_report_pdf.py` | Writes `results/Tunduma_Hydraulic_Analysis_Report.pdf`: an academic, black-and-white report of the whole process from intake to tanks, with every calculation worked step by step (numbers taken live from the model). |
 | `model/Tunduma_Transmission_Main_v1_*.inp` | Corrected EPANET models (open in EPANET 2.2): `ER_pumps` uses the ER pump duty points, `design_pumps` uses the duties computed here. |

@@ -163,6 +163,9 @@ class Node:
         # level the incoming pipe must reach (inlet / weir level); default = TWL (or sump LWL at an intake)
         default_inlet = self.min_level if self.type == "intake" else (self.max_level or self.min_level)
         self.inlet_level = d.get("inlet_level", default_inlet)
+        if (self.type in ("tank", "bps", "sump") and self.max_level is not None
+                and self.inlet_level is not None and self.inlet_level < self.max_level):
+            self.inlet_level = self.max_level      # submerged inlet: water must reach the top water level
         default_res = 0.0 if self.type == "intake" else settings["terminal_residual_head"]
         self.residual = d.get("residual_head", default_res)
         self.demand = float(d.get("demand_m3_day", 0.0))      # water drawn off at this node
